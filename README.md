@@ -1,6 +1,6 @@
 # php-auto-generate-for-sql
 
-This is SQL file Parser and PHP Query Generator .It also Generte 
+This is SQL file Parser and PHP Query Generator .It also Generates
 
 Database Connection Template and the Ajax Code for the Client Side based on the attributes of the Table.
 
