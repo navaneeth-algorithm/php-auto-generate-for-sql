@@ -284,7 +284,7 @@ Class Database{
 parser = argparse.ArgumentParser()
 parser.add_argument("--filename",type=str,required=True,help="Pass the Sql file")
 parser.add_argument("--tablename",type=str,required=True,help="Pass the tablename")
-parser.add_argument("--template",default=False,help="True to generate template file",choices=[True,False])
+parser.add_argument("--template",default=False,help="True to generate template file")
 
 args = parser.parse_args()
 sqlfile = args.filename
