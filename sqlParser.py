@@ -325,7 +325,7 @@ template = args.template
 
 #Takes TableExtraction takes the SQL file
 #has useful methods to display TableNames
-tableExtraction = TableExtraction("autophp.sql")
+tableExtraction = TableExtraction(sqlfile)
 #gives the list of Table present in the SQL file
 
 print("\n-----List of Table Names in autophp SQL file---------\n")
