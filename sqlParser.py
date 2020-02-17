@@ -300,7 +300,7 @@ tableExtraction = TableExtraction(sqlfile)
 print("\n-----List of Table Names in autophp SQL file---------\n")
 print(tableExtraction.getTableNames())
 
-print("\n-------Attributes of the Table Client--------\n")
+print("\n-------Attributes of the Table "+tablename+"--------\n")
 
 #Attribute Extraction takes TableExtraction object and the tableName
 attributes = AttributeExtraction(tableExtraction,tablename)
