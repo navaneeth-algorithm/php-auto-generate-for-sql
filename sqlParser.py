@@ -203,8 +203,8 @@ Class Database{
             self.__ajaxTemplate+='data["'+cleanedInputId.lower()+'"]=$("#'+cleanedInputId.lower()+'").val();\n'
             pass
         self.__ajaxTemplate+="\n\n"
-        self.__ajaxTemplate+="$.ajax({\n url:pathtoserverfile,\ndataType:'json',\ndata:{data:data},\ntype:POST,\n"
-        self.__ajaxTemplate+="success:function(responses){ \nconsole.log(responses)\n},\n});\n}"
+        self.__ajaxTemplate+='$.ajax({\n url:"pathtoserverfile",\ndataType:"json",\ndata:{data:data},\ntype:"POST",\n'
+        self.__ajaxTemplate+='success:function(responses){ \nconsole.log(responses)\n},\n});\n}'
 
 
         pass
