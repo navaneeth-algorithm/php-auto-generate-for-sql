@@ -19,7 +19,7 @@ If you have doubt regarding it ,
 Run 
 python sqlParser.py --filename autophp.sql --tablename Client --template True
 
-Here without Template option file neber gets generated
+<b>Here without Template option file never gets generated</b>
 
 Contact me in
 
