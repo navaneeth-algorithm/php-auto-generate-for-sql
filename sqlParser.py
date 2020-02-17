@@ -17,6 +17,7 @@ import enum
 import string
 import os.path
 from os import path
+import argparse
 
 #Clean the String from unwhanted character
 class CleaningString:
@@ -249,10 +250,10 @@ Class Database{
         pass
     
 
-    def createPHPQueryFile(self):
+    def createPHPQueryFile(self,sqlfile,tablename):
 
-        tableExtraction = TableExtraction('autophp.sql')
-        attributes = AttributeExtraction(tableExtraction,"Client")
+        tableExtraction = TableExtraction(sqlfile)
+        attributes = AttributeExtraction(tableExtraction,tablename)
         phpgenerator= GeneratePHPMySQLQuery(attributes)
 
         fileString = '<?php \n'+phpgenerator.getInsertQuery()
@@ -280,9 +281,19 @@ Class Database{
 
 
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--filename",type=str,required=True,help="Pass the Sql file")
+parser.add_argument("--tablename",type=str,required=True,help="Pass the tablename")
+parser.add_argument("--template",default=False,help="True to generate template file",choices=[True,False])
+
+args = parser.parse_args()
+sqlfile = args.filename
+tablename = args.tablename
+template = args.template
+
 #Takes TableExtraction takes the SQL file
 #has useful methods to display TableNames
-tableExtraction = TableExtraction('autophp.sql')
+tableExtraction = TableExtraction(sqlfile)
 
 #gives the list of Table present in the SQL file
 
@@ -292,7 +303,7 @@ print(tableExtraction.getTableNames())
 print("\n-------Attributes of the Table Client--------\n")
 
 #Attribute Extraction takes TableExtraction object and the tableName
-attributes = AttributeExtraction(tableExtraction,"Client")
+attributes = AttributeExtraction(tableExtraction,tablename)
 
 #has useful methods like
 #This will return the list of Attributes present in table
@@ -319,10 +330,12 @@ print(phpgenerator.getInsertQuery())
 print("\n------Generate the Execute Statement--------\n")
 #This will generate the Execute Statement for the PHP
 print(phpgenerator.getExecuteStatement())
-print("\n------File is Generated DbConnect Template if file does not exists--------\n")
-#This will generate the Database connection template
-phpgenerator.createConnectionTemplateFile()
 
-print("\n----File is Generated for INSERT Query  .php file if file does not exists-------\n")
-#This will create PHP file for the given table 
-phpgenerator.createPHPQueryFile()
+if template:
+    print("\n------File is Generated DbConnect Template if file does not exists--------\n")
+    #This will generate the Database connection template
+    phpgenerator.createConnectionTemplateFile()
+
+    print("\n----File is Generated for INSERT Query  .php file if file does not exists-------\n")
+    #This will create PHP file for the given table 
+    phpgenerator.createPHPQueryFile(sqlfile,tablename)
