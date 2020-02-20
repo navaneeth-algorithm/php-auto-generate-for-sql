@@ -261,7 +261,7 @@ Class Database{
             if(count==len(self.__attributeList)):
                 separator=''
             count+=1
-            self.__insertTemplate+=":"+cleanedlowercaseAlias+separator
+            self.__insertTemplate+=":"+cleanedlowercaseAlias+separator+"\n"
         
         self.__insertTemplate+=")';"
         pass
