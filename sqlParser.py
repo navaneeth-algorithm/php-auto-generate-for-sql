@@ -248,7 +248,7 @@ Class Database{
             separator = ','
             if(count==len(self.__attributeList)):
                 separator=''
-            self.__insertTemplate+=""+attributeName+separator
+            self.__insertTemplate+=""+attributeName+separator+"\n"
             count+=1
         self.__insertTemplate+=") VALUES("
 
@@ -276,7 +276,7 @@ Class Database{
             if(count==len(self.__attributeList)):
                 separator=''
             count+=1
-            self.__executeTemplate+="'"+cleanedlowercaseAlias+"'=>"+varname+cleanedlowercaseAlias+'"]'+separator
+            self.__executeTemplate+="'"+cleanedlowercaseAlias+"'=>"+varname+cleanedlowercaseAlias+'"]'+separator+"\n"
         
         self.__executeTemplate+="]);\n$pdo->close();"
         pass
